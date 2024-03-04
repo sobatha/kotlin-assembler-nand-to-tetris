@@ -6,15 +6,17 @@ import java.io.File
 fun main(args: Array<String>) {
     val parser = Parser()
     val code = Code()
-    val instructions = parser.readline("data/RectL.asm")
+    val instructions = parser.readline("data/Rect.asm")
+    val symbolTable = SymbolTable()
+    val instructionsWithoutLabel = symbolTable.prepareLabel(instructions)
 
-    for (instruction in instructions) {
+    for (instruction in instructionsWithoutLabel) {
         var machineCode: String = if (instruction.startsWith("@")) {
-            code.codeAInstruction(instruction.removePrefix("@"))
+            code.codeAInstruction(instruction, symbolTable)
         } else {
             code.codeCInstruction(instruction)
         }
         println("$instruction => $machineCode")
-        File("data/RectL.hack").appendText("$machineCode\n")
+        File("data/Rect.hack").appendText("$machineCode\n")
     }
 }

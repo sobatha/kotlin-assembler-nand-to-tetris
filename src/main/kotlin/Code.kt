@@ -14,8 +14,9 @@ val JMP_CODE = mutableMapOf(
 )
 
 class Code {
-    fun codeAInstruction(instruction: String): String {
-        var num = convertDecimalToBinary(instruction.toLong())
+    fun codeAInstruction(instruction: String, symbolTable: SymbolTable): String {
+        val mem = symbolTable.setOrGetVar(instruction.removePrefix("@"))
+        val num = convertDecimalToBinary(mem.toLong())
         return String.format("%016d", num)
     }
 
