@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="code instruction without symbols">
-      <change afterPath="$PROJECT_DIR$/data/MaxL.hack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/RectL.hack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/SymbolTable.kt" afterDir="false" />
+    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="implement to code symbols">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Rect.hack" beforeDir="false" afterPath="$PROJECT_DIR$/data/Rect.hack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Code.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Code.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +120,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709558533931</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="implement to code symbols">
+      <option name="closed" value="true" />
+      <created>1709565455716</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1709565455716</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -146,6 +148,7 @@
     <MESSAGE value="a instruction encode" />
     <MESSAGE value="add test files" />
     <MESSAGE value="code instruction without symbols" />
-    <option name="LAST_COMMIT_MESSAGE" value="code instruction without symbols" />
+    <MESSAGE value="implement to code symbols" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement to code symbols" />
   </component>
 </project>
