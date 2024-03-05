@@ -6,7 +6,7 @@ import java.io.File
 fun main(args: Array<String>) {
     val parser = Parser()
     val code = Code()
-    val instructions = parser.readline("data/Pong.asm")
+    val instructions = parser.readline("data/Rect.asm")
     val symbolTable = SymbolTable()
     val instructionsWithoutLabel = symbolTable.prepareLabel(instructions)
 
@@ -17,6 +17,6 @@ fun main(args: Array<String>) {
             code.codeCInstruction(instruction)
         }
         println("$instruction => $machineCode")
-        File("data/Pong.hack").appendText("$machineCode\n")
+        File("data/Rect.hack").appendText("$machineCode\n")
     }
 }

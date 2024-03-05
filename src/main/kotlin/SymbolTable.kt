@@ -19,7 +19,7 @@ class SymbolTable {
         for (instruction in instructions) {
             if (instruction.contains("(")) {
                 val label = instruction.removePrefix("(").removeSuffix(")")
-                variableTable[label] = index.toString()
+                variableTable[label] = (index).toString()
             }
             else {
                 newInstructions += instruction

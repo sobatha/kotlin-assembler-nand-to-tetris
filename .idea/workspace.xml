@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="implement to code symbols">
+    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="fix bug to encode label an index after">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Rect.hack" beforeDir="false" afterPath="$PROJECT_DIR$/data/Rect.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/SymbolTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/SymbolTable.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +131,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709565455716</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="create hack files">
+      <option name="closed" value="true" />
+      <created>1709571206932</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1709571206932</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -149,6 +160,7 @@
     <MESSAGE value="add test files" />
     <MESSAGE value="code instruction without symbols" />
     <MESSAGE value="implement to code symbols" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement to code symbols" />
+    <MESSAGE value="create hack files" />
+    <option name="LAST_COMMIT_MESSAGE" value="create hack files" />
   </component>
 </project>
