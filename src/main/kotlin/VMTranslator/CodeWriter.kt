@@ -5,7 +5,7 @@ import java.io.File
 class CodeWriter (filepath:String) {
     val filepath = filepath
     val arithmetic = Arithmetic()
-    val pointer = Pointer()
+    val pointer = Pointer(filepath.substringAfterLast("/").substringBeforeLast("."))
     fun write(parser:Parser) {
         while (true) {
             var assembley = ""

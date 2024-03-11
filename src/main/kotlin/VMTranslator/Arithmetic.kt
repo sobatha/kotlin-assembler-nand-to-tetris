@@ -2,7 +2,8 @@ package org.example.VMTranslator
 
 
 class Arithmetic {
-    private val pointer = Pointer()
+    private val pointer = Pointer("")
+    var counter = 0
 
     fun code(operand:String):String =
         when (operand) {
@@ -12,8 +13,9 @@ class Arithmetic {
             "neg" -> codeNeg()
             "gt" -> codeGt()
             "lt" -> codeLt()
-            "and" -> codeAdd()
+            "and" -> codeAnd()
             "or" -> codeOr()
+            "not" -> codeNot()
             else -> throw IllegalStateException("許容されていないオペランドです")
         }
 
@@ -28,37 +30,84 @@ class Arithmetic {
         return addCode
     }
     fun codeSub():String {
-        var subCode = ""
-        return subCode
+        var code = ""
+        code += pointer.decrementSP + pointer.setMemorySP
+        code += "D=M\n"
+        code += pointer.decrementSP + pointer.setMemorySP
+        code += "M=M-D\n"
+        code += pointer.incrementSP
+        return code
     }
 
     fun codeNeg():String {
-        var negCode = ""
-        return negCode
+        var code = pointer.decrementSP + pointer.setMemorySP
+        code += "M=-M\n"
+        code += pointer.incrementSP
+        return code
     }
     fun codeEq():String {
-        var eqCode = ""
-        return eqCode
+        var code = ""
+        code += pointer.decrementSP + pointer.setMemorySP
+        code += "D=M\n"
+        code += pointer.decrementSP + pointer.setMemorySP
+        code += "D=M-D\n@TRUE$counter\nD;JEQ\n" +
+                pointer.setMemorySP + "M=0\n@EQEND$counter\n0;JMP\n${setSPTrue(counter)}"
+        code += "(EQEND$counter)\n"
+        code += pointer.incrementSP
+        counter++
+        return code
     }
     fun codeGt():String {
-        var gtCode = ""
-        return gtCode
+        var code = ""
+        code += pointer.decrementSP + pointer.setMemorySP
+        code += "D=M\n"
+        code += pointer.decrementSP + pointer.setMemorySP
+        code += "D=M-D\n@TRUE$counter\nD;JGT\n" +
+                pointer.setMemorySP + "M=0\n@EQEND$counter\n0;JMP\n${setSPTrue(counter)}"
+        code += "(EQEND$counter)\n"
+        code += pointer.incrementSP
+
+        counter++
+        return code
     }
 
     fun codeLt():String {
-        var ltCode = ""
-        return ltCode
+        var code = ""
+        code += pointer.decrementSP + pointer.setMemorySP
+        code += "D=M\n"
+        code += pointer.decrementSP + pointer.setMemorySP
+        code += "D=M-D\n@TRUE$counter\nD;JLT\n" +
+                pointer.setMemorySP + "M=0\n@EQEND$counter\n0;JMP\n${setSPTrue(counter)}"
+        code += "(EQEND$counter)\n"
+        code += pointer.incrementSP
+
+        counter++
+        return code
     }
     fun codeAnd():String {
-        var andCode = ""
-        return andCode
+        var code = ""
+        code += pointer.decrementSP + pointer.setMemorySP
+        code += "D=M\n"
+        code += pointer.decrementSP + pointer.setMemorySP
+        code += "M=M&D\n"
+        code += pointer.incrementSP
+        return code
     }
     fun codeOr():String {
-        var orCode = ""
-        return orCode
+        var code = ""
+        code += pointer.decrementSP + pointer.setMemorySP
+        code += "D=M\n"
+        code += pointer.decrementSP + pointer.setMemorySP
+        code += "M=M|D\n"
+        code += pointer.incrementSP
+        return code
     }
     fun codeNot():String {
-        var notCode = ""
-        return notCode
+        var code = pointer.decrementSP + pointer.setMemorySP
+        code += "M=!M\n"
+        code += pointer.incrementSP
+        return code
     }
+
+    fun setSPTrue(counter:Int) = "(TRUE$counter)\n@SP\nA=M\nM=-1\n"
 }
