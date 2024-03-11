@@ -4,16 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="add test files">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Arithmetic.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/CodeWriter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Main.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/MemorySegment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Parser.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Pointer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vmCode/SimpleAdd.asm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vmCode/StaticTest.asm" afterDir="false" />
+    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="add test file">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/BasicTest.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/BasicTest.vm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/VMTranslator" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/VMTranslator.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/project7.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/Main.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/VMTranslator" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/VMTranslator.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vmCode/BasicTest.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vmCode/BasicTest.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vmCode/PointerTest.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vmCode/PointerTest.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vmCode/StackTest.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vmCode/StackTest.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vmCode/StaticTest.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Arithmetic.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Arithmetic.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/CodeWriter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/CodeWriter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/MemorySegment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/MemorySegment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Pointer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Pointer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vmCode/SimpleAdd.out" beforeDir="false" afterPath="$PROJECT_DIR$/vmCode/SimpleAdd.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vmCode/StaticTest.asm" beforeDir="false" afterPath="$PROJECT_DIR$/vmCode/StaticTest.asm" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,10 +69,15 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "jdk.selected.JAVA_MODULE": "openjdk-20",
-    "kotlin-language-version-configured": "true"
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/yokomizonatsuki/git/Nand-to-Tetris/Assembler/untitled/src/submit"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/submit" />
+      <recent name="$PROJECT_DIR$/src/main/kotlin/VMTranslator" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/data" />
     </key>
@@ -171,7 +192,23 @@
       <option name="project" value="LOCAL" />
       <updated>1709965621946</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="be able to add">
+      <option name="closed" value="true" />
+      <created>1710053257307</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1710053257308</updated>
+    </task>
+    <task id="LOCAL-00011" summary="add test file">
+      <option name="closed" value="true" />
+      <created>1710053308056</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1710053308056</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -194,6 +231,8 @@
     <MESSAGE value="create hack files" />
     <MESSAGE value="fix bug on assignments" />
     <MESSAGE value="add test files" />
-    <option name="LAST_COMMIT_MESSAGE" value="add test files" />
+    <MESSAGE value="be able to add" />
+    <MESSAGE value="add test file" />
+    <option name="LAST_COMMIT_MESSAGE" value="add test file" />
   </component>
 </project>

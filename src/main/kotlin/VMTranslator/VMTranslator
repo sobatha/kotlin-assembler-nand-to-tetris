@@ -1,0 +1,2 @@
+#!/bin/sh
+java -jar /Users/yokomizonatsuki/git/Nand-to-Tetris/Assembler/untitled/src/main/kotlin/VMTranslator/VMTranslator.jar $1
