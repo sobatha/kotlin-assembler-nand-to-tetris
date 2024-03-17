@@ -18,7 +18,7 @@ A=M
 A=M
 A=D-A
 M=D-A
-(LOOP)
+(BASICLOOP.$LOOP)
 @ARG
 D=M
 @0
@@ -124,8 +124,8 @@ M=M+1
 M=M-1
 A=M
 D=M
-@LOOP
-D+1;JGT
+@BASICLOOP.$LOOP
+D;JGT
 @LCL
 D=M
 @0
