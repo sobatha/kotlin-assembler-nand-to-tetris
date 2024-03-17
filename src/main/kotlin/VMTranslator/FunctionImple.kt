@@ -44,16 +44,16 @@ public class FunctionImple(className: String) {
 
     }
 
-    fun call(name:String, numOfArg:Int):String {
+    fun call(name:String, numOfArg:Int, funcName:String):String {
         var code = ""
-        var label = "${className.uppercase()}.$returnIndex"
+        var label = "${funcName.uppercase()}"+"$"+"ret.$returnIndex"
         returnIndex++
 
         code += saveReturnAddress(label)
         code += saveCurrentPointers()
         code += repositionPointers(numOfArg)
         code += "@${name.uppercase()}\n0;JMP\n"
-        code += "($label)"
+        code += "($label)\n"
         return code
     }
 

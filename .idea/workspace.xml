@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="pass tests Loop, Fibonacci">
+    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="pass tests simple function">
+      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/SimpleFunction/SimpleFunction.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/project8/FunctionCalls/SimpleFunction/SimpleFunction.asm" beforeDir="false" afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/SimpleFunction/SimpleFunction.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/project8/ProgramFlow/BasicLoop/BasicLoop.asm" beforeDir="false" afterPath="$PROJECT_DIR$/data/project8/ProgramFlow/BasicLoop/BasicLoop.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Branch.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Branch.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/CodeWriter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/CodeWriter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/FunctionImple.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/FunctionImple.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Main.kt" afterDir="false" />
     </list>
@@ -229,7 +232,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710652721015</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="pass tests simple function">
+      <option name="closed" value="true" />
+      <created>1710656406522</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1710656406523</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -258,6 +269,7 @@
     <MESSAGE value="add test files" />
     <MESSAGE value="implement branch" />
     <MESSAGE value="pass tests Loop, Fibonacci" />
-    <option name="LAST_COMMIT_MESSAGE" value="pass tests Loop, Fibonacci" />
+    <MESSAGE value="pass tests simple function" />
+    <option name="LAST_COMMIT_MESSAGE" value="pass tests simple function" />
   </component>
 </project>
