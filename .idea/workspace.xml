@@ -4,87 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="arithmetic implement">
-      <change afterPath="$PROJECT_DIR$/data/project6/Add.asm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project6/Add.hack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project6/Max.asm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project6/Max.hack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project6/MaxL.asm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project6/MaxL.hack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project6/Pong.asm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project6/Pong.hack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project6/PongL.asm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project6/Rect.asm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project6/Rect.hack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project6/RectL.asm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project6/RectL.hack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project6/prog.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project6/project6.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/FibonacciElement/FibonacciElement.cmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/FibonacciElement/FibonacciElement.tst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/FibonacciElement/FibonacciElementVME.tst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/FibonacciElement/Main.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/FibonacciElement/Sys.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/NestedCall/NestedCall.cmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/NestedCall/NestedCall.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/NestedCall/NestedCall.tst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/NestedCall/NestedCallStack.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/NestedCall/NestedCallVME.tst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/NestedCall/Sys.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/SimpleFunction/SimpleFunction.asm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/SimpleFunction/SimpleFunction.cmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/SimpleFunction/SimpleFunction.tst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/SimpleFunction/SimpleFunction.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/SimpleFunction/SimpleFunctionVME.tst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/StaticsTest/Class1.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/StaticsTest/Class2.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/StaticsTest/StaticsTest.cmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/StaticsTest/StaticsTest.tst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/StaticsTest/StaticsTestVME.tst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/StaticsTest/Sys.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/ProgramFlow/BasicLoop/BasicLoop.cmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/ProgramFlow/BasicLoop/BasicLoop.tst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/ProgramFlow/BasicLoop/BasicLoop.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/ProgramFlow/BasicLoop/BasicLoopVME.tst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/ProgramFlow/FibonacciSeries/FibonacciSeries.cmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/ProgramFlow/FibonacciSeries/FibonacciSeries.tst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/ProgramFlow/FibonacciSeries/FibonacciSeries.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/ProgramFlow/FibonacciSeries/FibonacciSeriesVME.tst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Branch.kt" afterDir="false" />
+    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="implement branch">
+      <change afterPath="$PROJECT_DIR$/data/project8/ProgramFlow/BasicLoop/BasicLoop.out" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/FunctionImple.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/submit/project7/BasicTest.asm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/submit/project7/BasicTest.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/submit/project7/Main.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/submit/project7/VMTranslator" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/submit/project7/makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/submit/project7/project7.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Add.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Add.hack" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Max.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Max.hack" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/MaxL.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/MaxL.hack" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Pong.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Pong.hack" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/PongL.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Rect.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Rect.hack" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/RectL.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/RectL.hack" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/CodeWriter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/CodeWriter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Parser.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Parser.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/VMTranslator" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/VMTranslator.jar" beforeDir="false" afterPath="$PROJECT_DIR$/src/submit/project7/VMTranslator.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/project7.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/submit/BasicTest.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/submit/BasicTest.vm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/submit/Main.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/submit/VMTranslator" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/submit/VMTranslator.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/submit/makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/submit/project7.zip" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -281,7 +206,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710175551295</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="add test files">
+      <option name="closed" value="true" />
+      <created>1710649400631</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1710649400632</updated>
+    </task>
+    <task id="LOCAL-00015" summary="implement branch">
+      <option name="closed" value="true" />
+      <created>1710651928365</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1710651928366</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -303,11 +244,12 @@
     <MESSAGE value="implement to code symbols" />
     <MESSAGE value="create hack files" />
     <MESSAGE value="fix bug on assignments" />
-    <MESSAGE value="add test files" />
     <MESSAGE value="be able to add" />
     <MESSAGE value="add test file" />
     <MESSAGE value="提出用ファイル作成" />
     <MESSAGE value="arithmetic implement" />
-    <option name="LAST_COMMIT_MESSAGE" value="arithmetic implement" />
+    <MESSAGE value="add test files" />
+    <MESSAGE value="implement branch" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement branch" />
   </component>
 </project>

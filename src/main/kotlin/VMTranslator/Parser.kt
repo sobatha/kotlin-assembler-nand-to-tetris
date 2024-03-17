@@ -14,6 +14,7 @@ class Parser(filePath: String) {
         .filter { skipCommentsAndBlankLine(it) }
         .map { skipInlineCommentsAndWhiteSpace(it) }
         .map { trimAndSplitCommands(it) }
+        .filter { it["command"]?.isNotEmpty() == true }
 
     var currentCommandIndex :Int = 0
 
