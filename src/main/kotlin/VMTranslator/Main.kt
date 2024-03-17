@@ -2,16 +2,12 @@ package org.example.VMTranslator
 
 import java.io.File
 
-fun main(args: Array<String>) {
-    if (args.size < 2) {
-        println("Usage: main.kt <input file name> <output file name>")
-        return
-    }
+fun main() {
+    val fileName = "data/project8/ProgramFlow/BasicLoop/BasicLoop"
 
-    val inputFileName = args[0]
-    val outputFileName = args[1]
+    val parser = Parser("$fileName.vm")
 
-    val parser = Parser(inputFileName)
-    val codeWriter = CodeWriter(outputFileName)
+    println(parser.vmCommands)
+    val codeWriter = CodeWriter("$fileName.asm")
     codeWriter.write(parser)
 }

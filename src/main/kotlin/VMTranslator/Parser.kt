@@ -5,7 +5,7 @@ import java.io.File
 val C_ARITHMETIC = mutableListOf("add", "sub", "neg", "eq", "gt", "lt", "and", "or", "not")
 val C_COMMANDS = mutableMapOf(
     "pop" to "C_POP", "push" to "C_PUSH", "label" to "C_LABEL", "goto" to "C_GOTO", "if-goto" to "C_IF",
-    "call" to "C_CALL", "return" to "C_RETURN"
+    "call" to "C_CALL", "return" to "C_RETURN", "function" to "C_FUNCTION"
 )
 class Parser(filePath: String) {
 
@@ -67,7 +67,7 @@ class Parser(filePath: String) {
     private fun trimAndSplitCommands(line: String): Map<String, String> {
         val lis = line.split(" ")
         return mapOf(
-            "command" to lis[0],
+            "command" to lis[0].trim(),
             "arg1" to if (lis.size >= 2) lis[1] else "",
             "arg2" to if (lis.size >= 3) lis[2] else ""
         )
