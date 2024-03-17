@@ -8,7 +8,6 @@ public class FunctionImple(className: String) {
     fun def(name:String, numOfVar: Int):String {
         var code = ""
         code += "(${name.uppercase()})\n"
-        code += "@SP\nD=A\n@LCL\nM=D\n"
         for (i in 1..numOfVar) code += setMemorySP + "M=0\n" + incrementSP
         return code
     }
@@ -25,8 +24,8 @@ public class FunctionImple(className: String) {
 
     fun returnFunc():String {
         var code = ""
-        code += "@LCL\nD=A\n" //D=LCL
-        code += "@5\nD-A\n@LCL\nA=M\nM=D" //RAM[LCL]=retAddress
+        code += "@LCL\nD=M\n" //D=LCL
+        code += "@5\nD=D-A\nA=D\nD=M\n@15\nM=D\n" //RAM[15]=retAddress
 
         code += decrementSP + "A=M\nD=M\n" //popするvalueをDに格納
         code += "@ARG\nD=D+M\n" //Dにpop先のアドレスを格納(D=popするvalue + pop先.address)
@@ -35,11 +34,11 @@ public class FunctionImple(className: String) {
         code += "M=D-A\n" //M=popする値
 
         code += "D=A+1\n@SP\nM=D\n" //SP = ARG + 1
-        code += "@LCL\nD=M-1\nA=D\nD=M\n@THAT\nM=D\n"// THAT = *(endFrame – 1)
-        code += "D=D-1\n@THIS\nM=D\n"
-        code += "D=D-1\n@ARG\nM=D\n"
-        code += "D=D-1\n@LCL\nM=D\n"
-        code += "@4\nD=D+A\nA=D\nD=M\nA=D\n0;JMP\n"
+        code += "@LCL\nAM=M-1\nD=M\n@THAT\nM=D\n"// THAT = *(endFrame – 1)
+        code += "@LCL\nAM=M-1\nD=M\n@THIS\nM=D\n"
+        code += "@LCL\nAM=M-1\nD=M\n@ARG\nM=D\n"
+        code += "@LCL\nAM=M-1\nD=M\n@LCL\nM=D\n"
+        code += "@15\nA=M\n0;JMP\n"
 
         return code
 
