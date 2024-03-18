@@ -5,14 +5,14 @@ class Arithmetic {
     private val pointer = Pointer("")
     var counter = 0
 
-    fun code(operand:String):String =
+    fun code(operand:String, currentFunction:String):String =
         when (operand) {
             "add" -> codeAdd()
             "sub" -> codeSub()
-            "eq" -> codeEq()
+            "eq" -> codeEq(currentFunction)
             "neg" -> codeNeg()
-            "gt" -> codeGt()
-            "lt" -> codeLt()
+            "gt" -> codeGt(currentFunction)
+            "lt" -> codeLt(currentFunction)
             "and" -> codeAnd()
             "or" -> codeOr()
             "not" -> codeNot()
@@ -45,40 +45,40 @@ class Arithmetic {
         code += pointer.incrementSP
         return code
     }
-    fun codeEq():String {
+    fun codeEq(currentFunction: String):String {
         var code = ""
         code += pointer.decrementSP + pointer.setMemorySP
         code += "D=M\n"
         code += pointer.decrementSP + pointer.setMemorySP
-        code += "D=M-D\n@TRUE$counter\nD;JEQ\n" +
-                pointer.setMemorySP + "M=0\n@EQEND$counter\n0;JMP\n${setSPTrue(counter)}"
-        code += "(EQEND$counter)\n"
+        code += "D=M-D\n@$currentFunction.TRUE$counter\nD;JEQ\n" +
+                pointer.setMemorySP + "M=0\n@$currentFunction.EQEND$counter\n0;JMP\n${setSPTrue(counter, currentFunction)}"
+        code += "($currentFunction.EQEND$counter)\n"
         code += pointer.incrementSP
         counter++
         return code
     }
-    fun codeGt():String {
+    fun codeGt(currentFunction:String):String {
         var code = ""
         code += pointer.decrementSP + pointer.setMemorySP
         code += "D=M\n"
         code += pointer.decrementSP + pointer.setMemorySP
-        code += "D=M-D\n@TRUE$counter\nD;JGT\n" +
-                pointer.setMemorySP + "M=0\n@EQEND$counter\n0;JMP\n${setSPTrue(counter)}"
-        code += "(EQEND$counter)\n"
+        code += "D=M-D\n@$currentFunction.TRUE$counter\nD;JGT\n" +
+                pointer.setMemorySP + "M=0\n@$currentFunction.EQEND$counter\n0;JMP\n${setSPTrue(counter, currentFunction)}"
+        code += "($currentFunction.EQEND$counter)\n"
         code += pointer.incrementSP
 
         counter++
         return code
     }
 
-    fun codeLt():String {
+    fun codeLt(currentFunction:String):String {
         var code = ""
         code += pointer.decrementSP + pointer.setMemorySP
         code += "D=M\n"
         code += pointer.decrementSP + pointer.setMemorySP
-        code += "D=M-D\n@TRUE$counter\nD;JLT\n" +
-                pointer.setMemorySP + "M=0\n@EQEND$counter\n0;JMP\n${setSPTrue(counter)}"
-        code += "(EQEND$counter)\n"
+        code += "D=M-D\n@$currentFunction.TRUE$counter\nD;JLT\n" +
+                pointer.setMemorySP + "M=0\n@$currentFunction.EQEND$counter\n0;JMP\n${setSPTrue(counter, currentFunction)}"
+        code += "($currentFunction.EQEND$counter)\n"
         code += pointer.incrementSP
 
         counter++
@@ -109,5 +109,5 @@ class Arithmetic {
         return code
     }
 
-    fun setSPTrue(counter:Int) = "(TRUE$counter)\n@SP\nA=M\nM=-1\n"
+    fun setSPTrue(counter:Int, currentFunction:String) = "($currentFunction.TRUE$counter)\n@SP\nA=M\nM=-1\n"
 }

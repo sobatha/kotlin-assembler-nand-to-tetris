@@ -4,7 +4,7 @@ import VMTranslator.FunctionImple
 import java.io.File
 
 fun main() {
-    val fileName = "data/project8/FunctionCalls/StaticsTest"
+    val fileName = "data/project8/FunctionCalls/FibonacciElement"
 
     if (fileName.endsWith(".vm")) {
         val parser = Parser("$fileName")

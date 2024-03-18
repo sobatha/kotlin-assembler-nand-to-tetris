@@ -33,7 +33,7 @@ class CodeWriter (outputFilepath:String, inputFilepath:String) {
 
     fun generateAssembler(parser:Parser) =
         when(parser.detectCommandType()) {
-            "C_ARITHMETIC" -> arithmetic.code(parser.arg1())
+            "C_ARITHMETIC" -> arithmetic.code(parser.arg1(), "$className.$currentFunction")
             "C_POP" -> pointer.codePop(parser.arg1(), parser.arg2())
             "C_PUSH" -> pointer.codePush(parser.arg1(), parser.arg2())
             "C_LABEL" -> branch.writeLabel(parser.arg1(), "$className.$currentFunction")
