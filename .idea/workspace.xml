@@ -4,13 +4,50 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="pass static tests">
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/FibonacciElement/FibonacciElement.asm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/StaticsTest/StaticsTest.out" afterDir="false" />
+    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="pass fibonacci test &#10;altering label to include name of functions">
+      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/FibonacciElement/FibonacciElement.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/NestedCall/NestedCall.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/FibonacciElement/FibonacciElement.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/FibonacciElement/FibonacciElement.cmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/FibonacciElement/FibonacciElement.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/FibonacciElement/FibonacciElement.tst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/FibonacciElement/FibonacciElementVME.tst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/FibonacciElement/Main.vm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/FibonacciElement/Sys.vm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/NestedCall/NestedCall.cmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/NestedCall/NestedCall.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/NestedCall/NestedCall.tst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/NestedCall/NestedCallStack.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/NestedCall/NestedCallVME.tst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/NestedCall/Sys.vm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/SimpleFunction/SimpleFunction.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/SimpleFunction/SimpleFunction.cmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/SimpleFunction/SimpleFunction.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/SimpleFunction/SimpleFunction.tst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/SimpleFunction/SimpleFunction.vm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/SimpleFunction/SimpleFunctionVME.tst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/StaticsTest/Class1.vm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/StaticsTest/Class2.vm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/StaticsTest/StaticsTest.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/StaticsTest/StaticsTest.cmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/StaticsTest/StaticsTest.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/StaticsTest/StaticsTest.tst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/StaticsTest/StaticsTestVME.tst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/StaticsTest/Sys.vm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/Main.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/VMTranslator" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/VMTranslator.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/submit/project8/makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Arithmetic.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Arithmetic.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/CodeWriter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/CodeWriter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/project8/FunctionCalls/FibonacciElement/FibonacciElement.asm" beforeDir="false" afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/FibonacciElement/FibonacciElement.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/project8/FunctionCalls/SimpleFunction/SimpleFunction.asm" beforeDir="false" afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/SimpleFunction/SimpleFunction.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/project8/FunctionCalls/SimpleFunction/SimpleFunction.out" beforeDir="false" afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/SimpleFunction/SimpleFunction.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/project8/FunctionCalls/StaticsTest/StaticsTest.asm" beforeDir="false" afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/StaticsTest/StaticsTest.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/project8/ProgramFlow/BasicLoop/BasicLoop.out" beforeDir="false" afterPath="$PROJECT_DIR$/data/project8/ProgramFlow/BasicLoop/BasicLoop.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/project8/ProgramFlow/FibonacciSeries/FibonacciSeries.out" beforeDir="false" afterPath="$PROJECT_DIR$/data/project8/ProgramFlow/FibonacciSeries/FibonacciSeries.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Branch.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Branch.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/FunctionImple.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/FunctionImple.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/makefile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,11 +89,12 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "jdk.selected.JAVA_MODULE": "openjdk-20",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/yokomizonatsuki/git/Nand-to-Tetris/Assembler/untitled/src/submit"
+    "last_opened_file_path": "/Users/yokomizonatsuki/git/Nand-to-Tetris/Assembler/untitled/src/submit/project8"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/submit/project8" />
       <recent name="$PROJECT_DIR$/src/submit" />
       <recent name="$PROJECT_DIR$/src/main/kotlin/VMTranslator" />
     </key>
@@ -263,7 +301,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710728549457</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="pass fibonacci test &#10;altering label to include name of functions">
+      <option name="closed" value="true" />
+      <created>1710740569722</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1710740569725</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -296,6 +342,7 @@
     <MESSAGE value="update name of labels" />
     <MESSAGE value="redo tests" />
     <MESSAGE value="pass static tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="pass static tests" />
+    <MESSAGE value="pass fibonacci test &#10;altering label to include name of functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="pass fibonacci test &#10;altering label to include name of functions" />
   </component>
 </project>
