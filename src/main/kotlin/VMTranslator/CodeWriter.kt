@@ -3,10 +3,10 @@ package org.example.VMTranslator
 import VMTranslator.FunctionImple
 import java.io.File
 
-class CodeWriter (filepath:String) {
-    val filepath = filepath
+class CodeWriter (outputFilepath:String, inputFilepath:String) {
+    val filepath = outputFilepath
     val arithmetic = Arithmetic()
-    val className = filepath.substringAfterLast("/").substringBeforeLast(".")
+    val className = inputFilepath.substringAfterLast("/").substringBeforeLast(".")
     val pointer = Pointer(className)
     val branch = Branch()
     val function = FunctionImple(className)

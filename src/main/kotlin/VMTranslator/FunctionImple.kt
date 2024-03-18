@@ -63,11 +63,12 @@ public class FunctionImple(className: String) {
         return code
     }
 
-    private fun repositionPointers(numOfArg: Int) {
+    private fun repositionPointers(numOfArg: Int):String {
         var code = ""
-        code += "@5\nD=A\n@SP\nD=A-D\n@$numOfArg\n" +
+        code += "@5\nD=A\n@SP\nD=M-D\n@$numOfArg\n" +
                 "D=D-A\n@ARG\nM=D\n"        //reposition ARG
-        code += "@SP\nD=A\n@LCL\nM=D\n"     //reposition LCL
+        code += "@SP\nD=M\n@LCL\nM=D\n"     //reposition LCL
+        return code
     }
 
     val incrementSP = "@SP\nM=M+1\n"

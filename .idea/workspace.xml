@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="pass tests simple function">
-      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/SimpleFunction/SimpleFunction.out" afterDir="false" />
+    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="redo tests">
+      <change afterPath="$PROJECT_DIR$/data/project8/FunctionCalls/StaticsTest/StaticsTest.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/project8/ProgramFlow/BasicLoop/BasicLoop.asm" beforeDir="false" afterPath="$PROJECT_DIR$/data/project8/ProgramFlow/BasicLoop/BasicLoop.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Branch.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Branch.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/CodeWriter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/CodeWriter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/FunctionImple.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/FunctionImple.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Main.kt" afterDir="false" />
@@ -240,7 +238,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710656406523</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="update name of labels">
+      <option name="closed" value="true" />
+      <created>1710685330276</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1710685330277</updated>
+    </task>
+    <task id="LOCAL-00019" summary="redo tests">
+      <option name="closed" value="true" />
+      <created>1710685347852</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1710685347852</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -270,6 +284,8 @@
     <MESSAGE value="implement branch" />
     <MESSAGE value="pass tests Loop, Fibonacci" />
     <MESSAGE value="pass tests simple function" />
-    <option name="LAST_COMMIT_MESSAGE" value="pass tests simple function" />
+    <MESSAGE value="update name of labels" />
+    <MESSAGE value="redo tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="redo tests" />
   </component>
 </project>
