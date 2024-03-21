@@ -1,4 +1,4 @@
-package org.example
+package org.example.Assembler
 
 fun main() {
     val playerName: String = "Estragon"

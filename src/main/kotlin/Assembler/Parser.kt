@@ -1,4 +1,4 @@
-package org.example
+package org.example.Assembler
 import java.io.File
 
 class Parser {

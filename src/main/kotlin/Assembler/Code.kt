@@ -1,4 +1,4 @@
-package org.example
+package org.example.Assembler
 
 val C_CODE = mutableMapOf(
     "0" to "0101010", "1" to "0111111", "-1" to "0111010", "D" to "0001100", "A" to "0110000", "!D" to "0001101",

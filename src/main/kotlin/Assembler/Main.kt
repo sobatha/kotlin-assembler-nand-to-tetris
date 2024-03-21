@@ -1,4 +1,4 @@
-package org.example
+package org.example.Assembler
 import java.io.File
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
