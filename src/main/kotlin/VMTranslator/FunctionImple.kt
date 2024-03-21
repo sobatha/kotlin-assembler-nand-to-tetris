@@ -59,7 +59,7 @@ public class FunctionImple(className: String) {
 
     private fun saveReturnAddress(label:String): String {
         var code = ""
-        code += saveMemorySegmentAddress(label) + incrementSP //set return address
+        code += "@$label\nD=A\n" + setMemorySP + "M=D\n" + incrementSP //set return address
         return code
     }
 
@@ -75,6 +75,6 @@ public class FunctionImple(className: String) {
     val decrementSP = "@SP\nM=M-1\n"
     val setMemorySP = "@SP\nA=M\n"
 
-    fun saveMemorySegmentAddress(seg:String) = "@$seg\nD=A\n" + setMemorySP + "M=D\n"
+    fun saveMemorySegmentAddress(seg:String) = "@$seg\nD=M\n" + setMemorySP + "M=D\n"
 
 }

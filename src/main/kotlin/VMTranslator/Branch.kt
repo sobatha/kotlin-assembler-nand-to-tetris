@@ -9,7 +9,7 @@ class Branch {
 
     fun writeIfGoto(label:String, funcName:String):String {
         var code = "@SP\nM=M-1\nA=M\nD=M\n" + //set pointer top of stack and D=pop()
-                "@${funcName.uppercase()}"+"$"+"${label.uppercase()}\nD;JGT\n"
+                "@${funcName.uppercase()}"+"$"+"${label.uppercase()}\nD+1;JEQ\nD;JGT\n"
         return code
     }
 }
