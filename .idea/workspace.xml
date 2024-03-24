@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="add test files">
-      <change afterPath="$PROJECT_DIR$/src/submit/project8/Main.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/submit/project8/VMTranslator" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/submit/project8/VMTranslator.jar" afterDir="false" />
+    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="move old files">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Compiler/JackTokenizer.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Compiler/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/project8/ProgramFlow/BasicLoop/BasicLoop.out" beforeDir="false" afterPath="$PROJECT_DIR$/data/project8/ProgramFlow/BasicLoop/BasicLoop.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Branch.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Branch.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/FunctionImple.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/FunctionImple.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/FibonacciElement/FibonacciElement.asm" beforeDir="false" afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/FibonacciElement/FibonacciElement.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/FibonacciElement/FibonacciElement.out" beforeDir="false" afterPath="$PROJECT_DIR$/src/submit/project8/FunctionCalls/FibonacciElement/FibonacciElement.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/submit/project8/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/src/submit/project8/makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Main.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +19,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin File" />
-        <option value="Kotlin Class" />
         <option value="Class" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -66,6 +60,7 @@
       <recent name="$PROJECT_DIR$/src/main/kotlin/VMTranslator" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/kotlin/Assembler" />
       <recent name="$PROJECT_DIR$/src/submit/project8/FunctionCalls/FibonacciElement" />
       <recent name="$PROJECT_DIR$/src/submit" />
       <recent name="$PROJECT_DIR$/data" />
@@ -80,7 +75,7 @@
       </method>
     </configuration>
     <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.MainKt" />
+      <option name="MAIN_CLASS_NAME" value="org.example.Assembler.MainKt" />
       <module name="untitled.main" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -285,7 +280,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710761776694</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="make submission files">
+      <option name="closed" value="true" />
+      <created>1710990465565</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1710990465565</updated>
+    </task>
+    <task id="LOCAL-00024" summary="move old files">
+      <option name="closed" value="true" />
+      <created>1710990494072</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1710990494072</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -319,6 +330,8 @@
     <MESSAGE value="pass static tests" />
     <MESSAGE value="pass fibonacci test &#10;altering label to include name of functions" />
     <MESSAGE value="add test files" />
-    <option name="LAST_COMMIT_MESSAGE" value="add test files" />
+    <MESSAGE value="make submission files" />
+    <MESSAGE value="move old files" />
+    <option name="LAST_COMMIT_MESSAGE" value="move old files" />
   </component>
 </project>

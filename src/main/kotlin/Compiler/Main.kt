@@ -1,0 +1,4 @@
+package Compiler
+
+class Main {
+}
