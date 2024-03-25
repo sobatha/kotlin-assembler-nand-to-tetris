@@ -4,11 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="move old files">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Compiler/JackTokenizer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Compiler/Main.kt" afterDir="false" />
+    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="make jack tokenizer outline">
+      <change afterPath="$PROJECT_DIR$/data/10/ArrayTest/Main.jack" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/10/ArrayTest/Main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/10/ArrayTest/MainT.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/Main.jack" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/Main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/MainT.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/Square.jack" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/Square.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/SquareGame.jack" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/SquareGame.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/SquareGameT.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/SquareT.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/10/Square/Main.jack" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/10/Square/Main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/10/Square/MainT.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/10/Square/Square.jack" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/10/Square/Square.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/10/Square/SquareGame.jack" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/10/Square/SquareGame.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/10/Square/SquareGameT.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/10/Square/SquareT.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/tests/TestCompilerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/VMTranslator/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Compiler/JackTokenizer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Compiler/JackTokenizer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Compiler/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Compiler/Main.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,9 +39,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin File" />
-        <option value="Class" />
         <option value="Kotlin Class" />
+        <option value="Kotlin Script" />
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -44,10 +67,13 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Gradle.Build untitled.executor": "Run",
-    "Kotlin.MainKt (1).executor": "Run",
+    "Kotlin.MainKt (1).executor": "Debug",
+    "Kotlin.MainKt (2).executor": "Run",
     "Kotlin.MainKt.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "jdk.selected.JAVA_MODULE": "openjdk-20",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/yokomizonatsuki/git/Nand-to-Tetris/Assembler/untitled/src/submit/project8"
@@ -65,10 +91,23 @@
       <recent name="$PROJECT_DIR$/src/submit" />
       <recent name="$PROJECT_DIR$/data" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="tests" />
+    </key>
   </component>
-  <component name="RunManager" selected="Kotlin.MainKt (1)">
+  <component name="RunManager" selected="Kotlin.MainKt (2)">
     <configuration name="MainKt (1)" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.VMTranslator.MainKt" />
+      <module name="untitled.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainKt (2)" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Compiler.MainKt" />
       <module name="untitled.main" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -83,6 +122,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin.MainKt (2)" />
         <item itemvalue="Kotlin.MainKt (1)" />
         <item itemvalue="Kotlin.MainKt" />
       </list>
@@ -296,7 +336,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710990494072</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="make jack tokenizer outline">
+      <option name="closed" value="true" />
+      <created>1711292295288</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1711292295288</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -332,6 +380,7 @@
     <MESSAGE value="add test files" />
     <MESSAGE value="make submission files" />
     <MESSAGE value="move old files" />
-    <option name="LAST_COMMIT_MESSAGE" value="move old files" />
+    <MESSAGE value="make jack tokenizer outline" />
+    <option name="LAST_COMMIT_MESSAGE" value="make jack tokenizer outline" />
   </component>
 </project>
