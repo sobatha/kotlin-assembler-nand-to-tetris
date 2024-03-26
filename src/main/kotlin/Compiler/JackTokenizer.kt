@@ -8,8 +8,9 @@ val KEYWORDS = listOf("class", "constructor", "function", "method", "field",  "s
 val SYMBOLS = listOf('{', '}', '(', ')', '[', ']', '.', ',', ';', '+', '-', '*', '/', '&', '|', '<', '>', '=', '~')
 class JackTokenizer(filePath: String) {
 
-    var token = ""
     var currentTokenType = ""
+    var currentToken = ""
+    var currentIndex = 0
     private var commentFlag = false
     var tokens:MutableList<String> = mutableListOf()
 
@@ -18,38 +19,48 @@ class JackTokenizer(filePath: String) {
             .readLines()
             .filter { skipCommentsAndBlankLine(it) }
             .map { skipInlineCommentsAndWhiteSpace(it) }
-        for (line in lines) decomposeToken(line)
+        for (line in lines) decomposeToken(line, tokens)
+        tokens = composeStringConst(tokens)
     }
     fun hasMoreToken():Boolean {
-        return true
+        return currentIndex < tokens.size
     }
 
     fun advance() {
-
+        if (currentIndex >= tokens.size) throw IllegalStateException("current index is out of range")
+        currentToken = tokens[currentIndex]
+        currentTokenType =  when {
+            currentToken.length == 1 && currentToken[0] in SYMBOLS  -> "SYMBOL"
+            currentToken in KEYWORDS -> "KEYWORD"
+            currentToken.toIntOrNull() != null -> "INT_CONST"
+            currentToken.startsWith("\"") && currentToken.endsWith("\"") -> "STRING_CONST"
+            else -> "IDENTIFIER"
+        }
+        currentIndex++
     }
 
     fun getTokenType():String {
-        return TOKEN_TYPE.shuffled().first()
+        return currentTokenType
     }
 
     fun getKeyWord(): String {
-        return KEYWORDS.shuffled().first()
+        return currentToken
     }
 
     fun getSymbol(): Char {
-        return ';'
+        return currentToken[0]
     }
 
     fun getIdentifier(): String {
-        return "variable"
+        return currentToken
     }
 
     fun getIntVal(): Int {
-        return 1
+        return currentToken.toInt()
     }
 
     fun getStringVal(): String {
-        return "string"
+        return currentToken
     }
     private fun skipCommentsAndBlankLine(line: String): Boolean {
         var temp = line
@@ -74,10 +85,11 @@ class JackTokenizer(filePath: String) {
         return line.trim()
     }
 
-    private fun decomposeToken(line: String) {
+    private fun decomposeToken(line: String, tokens:MutableList<String>) {
         val words = line.split(" ")
+
         for (word in words) {
-            println(word)
+//            println(word)
             var temp = word.trim()
             var token = ""
             for (c in temp) {
@@ -94,4 +106,26 @@ class JackTokenizer(filePath: String) {
         }
     }
 
+    private fun composeStringConst(words: List<String>): MutableList<String> {
+        val tokens:MutableList<String> = mutableListOf()
+        var stringConst = ""
+        for (word in words) {
+            if (word.startsWith("\"")) {
+                if (word.endsWith("\"")) {
+                    tokens.add(word)
+                } else {
+                    stringConst += word
+                }
+            }
+            else if (word.endsWith("\"")) {
+                stringConst += " $word"
+                tokens.add(stringConst)
+                stringConst = ""
+            } else {
+                if (stringConst.isNotEmpty()) stringConst += " $word"
+                else tokens.add(word)
+            }
+        }
+        return tokens
+    }
 }

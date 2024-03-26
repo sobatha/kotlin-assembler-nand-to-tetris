@@ -6,17 +6,18 @@ package Compiler
      var tokenizer = JackTokenizer(file)
      println(tokenizer.tokens)
 
-//     while (tokenizer.hasMoreToken()) {
-//         var token = when (tokenizer.getTokenType()) {
-//             "KEYWORD" -> tokenizer.getKeyWord()
-//             "SYMBOL" -> tokenizer.getSymbol()
-//             "IDENTIFIER" -> tokenizer.getIdentifier()
-//             "INT_CONST" -> tokenizer.getIntVal()
-//             "STRING_CONST" -> tokenizer.getStringVal()
-//             else -> "error"
-//         }
-//
-//         println("${tokenizer.getTokenType()} : $token")
-//     }
+     while (tokenizer.hasMoreToken()) {
+         tokenizer.advance()
+         var token = when (tokenizer.getTokenType()) {
+             "KEYWORD" -> tokenizer.getKeyWord()
+             "SYMBOL" -> tokenizer.getSymbol()
+             "IDENTIFIER" -> tokenizer.getIdentifier()
+             "INT_CONST" -> tokenizer.getIntVal()
+             "STRING_CONST" -> tokenizer.getStringVal()
+             else -> "error"
+         }
+
+         println("${tokenizer.getTokenType()} : $token")
+     }
 
  }

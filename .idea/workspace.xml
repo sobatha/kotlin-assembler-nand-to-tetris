@@ -4,30 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="make jack tokenizer outline">
-      <change afterPath="$PROJECT_DIR$/data/10/ArrayTest/Main.jack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/ArrayTest/Main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/ArrayTest/MainT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/Main.jack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/Main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/MainT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/Square.jack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/Square.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/SquareGame.jack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/SquareGame.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/SquareGameT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/SquareT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/Square/Main.jack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/Square/Main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/Square/MainT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/Square/Square.jack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/Square/Square.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/Square/SquareGame.jack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/Square/SquareGame.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/Square/SquareGameT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/Square/SquareT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/tests/TestCompilerTest.java" afterDir="false" />
+    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="read jack file and parse it into list of tokens">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/10/ExpressionLessSquare/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/Main.jack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Compiler/JackTokenizer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Compiler/JackTokenizer.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Compiler/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Compiler/Main.kt" afterDir="false" />
     </list>
@@ -344,7 +323,23 @@
       <option name="project" value="LOCAL" />
       <updated>1711292295288</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="prepare project test files">
+      <option name="closed" value="true" />
+      <created>1711381508510</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1711381508510</updated>
+    </task>
+    <task id="LOCAL-00027" summary="read jack file and parse it into list of tokens">
+      <option name="closed" value="true" />
+      <created>1711381562285</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1711381562285</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -381,6 +376,8 @@
     <MESSAGE value="make submission files" />
     <MESSAGE value="move old files" />
     <MESSAGE value="make jack tokenizer outline" />
-    <option name="LAST_COMMIT_MESSAGE" value="make jack tokenizer outline" />
+    <MESSAGE value="prepare project test files" />
+    <MESSAGE value="read jack file and parse it into list of tokens" />
+    <option name="LAST_COMMIT_MESSAGE" value="read jack file and parse it into list of tokens" />
   </component>
 </project>
