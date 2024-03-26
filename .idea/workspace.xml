@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="read jack file and parse it into list of tokens">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/10/ExpressionLessSquare/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/Main.jack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Compiler/JackTokenizer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Compiler/JackTokenizer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Compiler/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Compiler/Main.kt" afterDir="false" />
+    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="create tokenizer to return token and its type">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Compiler/CompileEngine.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,11 +15,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Class" />
         <option value="Kotlin Script" />
         <option value="Class" />
         <option value="JUnit5 Test Class" />
         <option value="Kotlin File" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -339,7 +336,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711381562285</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="create tokenizer to return token and its type">
+      <option name="closed" value="true" />
+      <created>1711429767466</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1711429767466</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -378,6 +383,7 @@
     <MESSAGE value="make jack tokenizer outline" />
     <MESSAGE value="prepare project test files" />
     <MESSAGE value="read jack file and parse it into list of tokens" />
-    <option name="LAST_COMMIT_MESSAGE" value="read jack file and parse it into list of tokens" />
+    <MESSAGE value="create tokenizer to return token and its type" />
+    <option name="LAST_COMMIT_MESSAGE" value="create tokenizer to return token and its type" />
   </component>
 </project>
