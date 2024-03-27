@@ -27,7 +27,6 @@ class JackTokenizer(filePath: String) {
     }
 
     fun advance() {
-        if (currentIndex >= tokens.size) throw IllegalStateException("current index is out of range")
         currentToken = tokens[currentIndex]
         currentTokenType =  when {
             currentToken.length == 1 && currentToken[0] in SYMBOLS  -> "SYMBOL"
@@ -63,7 +62,7 @@ class JackTokenizer(filePath: String) {
         return currentToken
     }
     private fun skipCommentsAndBlankLine(line: String): Boolean {
-        var temp = line
+        var temp = line.trim()
 
         if (temp.startsWith("/**")) {
             commentFlag = true
@@ -109,10 +108,16 @@ class JackTokenizer(filePath: String) {
     private fun composeStringConst(words: List<String>): MutableList<String> {
         val tokens:MutableList<String> = mutableListOf()
         var stringConst = ""
+//        println("words; $words")
         for (word in words) {
+//            println("word; $word stringConst: $stringConst")
             if (word.startsWith("\"")) {
                 if (word.endsWith("\"")) {
-                    tokens.add(word)
+                    if (stringConst.isEmpty()) tokens.add(word)
+                    else {
+                        tokens.add("$stringConst $word")
+                        stringConst = ""
+                    }
                 } else {
                     stringConst += word
                 }

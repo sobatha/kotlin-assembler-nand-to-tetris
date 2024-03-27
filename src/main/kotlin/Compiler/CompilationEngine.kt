@@ -6,6 +6,10 @@ val tokenTypeToXmlTag: Map<String, String> = mapOf(
     "KEYWORD" to "keyword", "SYMBOL" to "symbol", "IDENTIFIER" to "identifier",
     "INT_CONST" to "integerConstant", "STRING_CONST" to "stringConstant")
 
+val KEYWORD_CONST = listOf("true", "false", "null", "this")
+val op = listOf("+", "-", "*", "/", "&", "|", ">", "<", "=")
+val escape: Map<String, String> = mapOf("<" to "&lt;", ">" to "&gt;","\"" to "&quote;","&" to "&amp;",)
+
 class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
     val outputPath = outputPath
     val tokenizer = tokenizer
@@ -31,7 +35,7 @@ class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
             compileSubroutine()
         }
 
-        process("}")
+        writeFile(compileTerminalTokens(tokenizer.currentToken, tokenizer.currentTokenType))
         writeFile("</class>")
     }
 
@@ -101,7 +105,7 @@ class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
 
     fun compileVarDec() {
         writeFile("<varDec>")
-        while (tokenizer.currentToken == "var") {
+        if (tokenizer.currentToken == "var") {
             process("var")
             process(tokenizer.currentToken)
             processIdentifier()
@@ -151,37 +155,118 @@ class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
     }
 
     fun compileIf() {
-        writeFile("<doStatement>")
-        writeFile("</doStatement>")
+        writeFile("<ifStatement>")
+        process("if")
+        process("(")
+        compileExpression()
+        process(")")
+        process("{")
+        compileStatements()
+        process("}")
+        if (tokenizer.currentToken == "else") {
+            process("else")
+            process("{")
+            compileStatements()
+            process("}")
+        }
+        writeFile("</ifStatement>")
     }
 
     fun compileWhile() {
         writeFile("<whileStatement>")
+        process("while")
+        process("(")
+        compileExpression()
+        process(")")
+        process("{")
+        compileStatements()
+        process("}")
         writeFile("</whileStatement>")
     }
 
     fun compileDo() {
         writeFile("<doStatement>")
-        writeFile("<doStatement>")
+        process("do")
+        processIdentifier()
+        if (tokenizer.currentToken == "(" ) {
+            process("(")
+            compileExpressionList()
+            process(")")
+        } else if (tokenizer.currentToken == ".") {
+            process(".")
+            processIdentifier()
+            process("(")
+            compileExpressionList()
+            process(")")
+        }
+        process(";")
+        writeFile("</doStatement>")
     }
 
     fun compileReturn() {
         writeFile("<returnStatement>")
+        process("return")
+        if (tokenizer.currentToken != ";") {
+            compileExpression()
+        }
+        process(";")
         writeFile("</returnStatement>")
     }
 
     fun compileExpression() {
         writeFile("<expression>")
+        compileTerm()
+        if (tokenizer.currentToken in op) {
+            process(tokenizer.currentToken)
+            compileTerm()
+        }
         writeFile("</expression>")
     }
 
     fun compileTerm() {
         writeFile("<term>")
+        if (tokenizer.currentTokenType == "KEYWORD" ||
+            tokenizer.currentTokenType == "INT_CONST" ||
+            tokenizer.currentTokenType == "STRING_CONST" ) {
+            process(tokenizer.currentToken)
+        } else if (tokenizer.currentTokenType == "IDENTIFIER") {
+            processIdentifier()
+            if (tokenizer.currentToken == "[") {
+                // if array access
+                process("[")
+                compileExpression()
+                process("]")
+            } else if (tokenizer.currentToken == "(" ) {
+                process("(")
+                compileExpressionList()
+                process(")")
+            } else if (tokenizer.currentToken == ".") {
+                process(".")
+                processIdentifier()
+                process("(")
+                compileExpressionList()
+                process(")")
+            }
+        } else if (tokenizer.currentToken == "(") {
+            process("(")
+            compileExpression()
+            process(")")
+        } else if (tokenizer.currentToken == "-" || tokenizer.currentToken == "~") {
+            process(tokenizer.currentToken)
+            compileTerm()
+        }
         writeFile("</term>")
     }
 
     fun compileExpressionList() {
         writeFile("<expressionList>")
+        if (tokenizer.currentToken != ")") {
+            compileExpression()
+            while (tokenizer.currentToken == ",") {
+                process(",")
+                compileExpression()
+            }
+        }
         writeFile("</expressionList>")
     }
 
@@ -192,6 +277,7 @@ class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
 
     private fun process(expectedToken: String) {
         if (tokenizer.currentToken == expectedToken) {
+            tokenizer.currentToken = escape[tokenizer.currentToken] ?: tokenizer.currentToken
             writeFile(compileTerminalTokens(tokenizer.currentToken, tokenizer.currentTokenType))
         } else {
             println("Syntax error")
