@@ -4,12 +4,15 @@ enum class Kind {
 }
 class SymbolTable {
     var table = mutableMapOf<String, Symbol>()
-    val kindIndex = mutableMapOf<Kind, Int>(
+    var kindIndex = mutableMapOf<Kind, Int>(
         Kind.VAR to 0, Kind.STATIC to 0, Kind.FIELD to 0, Kind.ARG to 0
     )
 
     val reset = {
         table = mutableMapOf<String, Symbol>()
+        kindIndex = mutableMapOf<Kind, Int>(
+            Kind.VAR to 0, Kind.STATIC to 0, Kind.FIELD to 0, Kind.ARG to 0
+        )
     }
     val define = { name: String, type:String, kind:Kind ->
         val index = kindIndex[kind]!!
