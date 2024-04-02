@@ -13,6 +13,7 @@ val escape: Map<String, String> = mapOf("<" to "&lt;", ">" to "&gt;","\"" to "&q
 class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
     val outputPath = outputPath
     val tokenizer = tokenizer
+    var className: String = ""
     val classSymbolTable = SymbolTable()
     var functionSymbolTable = SymbolTable()
 
@@ -25,7 +26,7 @@ class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
     fun compileClass() {
         writeFile("<class>")
         process("class")
-        processIdentifier()
+        className = processIdentifier()
         process("{")
 
         while (tokenizer.currentToken == "static" || tokenizer.currentToken == "field") {
@@ -58,7 +59,9 @@ class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
     }
 
     fun compileSubroutine() {
-        writeFile("<subroutineDec>")
+        functionSymbolTable.reset()
+        functionSymbolTable.define("this", className, functionSymbolTable.kindOf("argument"))
+
         when (tokenizer.currentToken) {
             "constructor" -> process("constructor")
             "function" -> process("function")
@@ -71,26 +74,28 @@ class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
         compileParameterList()
         process(")")
         compileSubroutineBody()
-        writeFile("</subroutineDec>")
+        println("function symbol table: ")
+        functionSymbolTable.printTable()
     }
 
     fun compileParameterList() {
-        writeFile("<parameterList>")
         while (tokenizer.currentToken == "int" ||
             tokenizer.currentToken == "char" ||
             tokenizer.currentToken == "boolean" ||
             tokenizer.currentTokenType == "IDENTIFIER"
         ) {
-            process(tokenizer.currentToken)
-            processIdentifier()
+            var type = process(tokenizer.currentToken)
+            var identifier = processIdentifier()
+            val kind = functionSymbolTable.kindOf("argument")
+            functionSymbolTable.define(identifier, type, kind)
 
             while (tokenizer.currentToken == ",") {
                 process(",")
-                process(tokenizer.currentToken)
-                processIdentifier()
+                type = process(tokenizer.currentToken)
+                identifier = processIdentifier()
+                functionSymbolTable.define(identifier, type, kind)
             }
         }
-        writeFile("</parameterList>")
     }
 
     fun compileSubroutineBody() {
@@ -105,19 +110,19 @@ class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
     }
 
     fun compileVarDec() {
-        writeFile("<varDec>")
         if (tokenizer.currentToken == "var") {
-            process("var")
-            process(tokenizer.currentToken)
-            processIdentifier()
+            val kind = classSymbolTable.kindOf(process("var"))
+            val type = process(tokenizer.currentToken)
+            var identifier = processIdentifier()
+            functionSymbolTable.define(identifier, type, kind)
 
             while (tokenizer.currentToken == ",") {
                 process(",")
-                processIdentifier()
+                identifier = processIdentifier()
+                functionSymbolTable.define(identifier, type, kind)
             }
             process(";")
         }
-        writeFile("</varDec>")
     }
 
     fun compileStatements() {

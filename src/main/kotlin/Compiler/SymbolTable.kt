@@ -33,7 +33,7 @@ class SymbolTable {
         when (it) {
             "static" -> Kind.STATIC
             "field" -> Kind.FIELD
-            "arg" -> Kind.ARG
+            "argument" -> Kind.ARG
             "var" -> Kind.VAR
             else -> Kind.NULL
         }
