@@ -4,27 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="test compiler">
-      <change afterPath="$PROJECT_DIR$/data/10/ArrayTest/MainTest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/Maintest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/SquareGameTest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/SquareTest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/Square/MainTest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/Square/SquareGameTest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10/Square/SquareTest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/submit/project10/JackAnalyzer" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/submit/project10/JackAnalyzer.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/submit/project10/JackAnalyzer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/submit/project10/Square/Main.jack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/submit/project10/Square/Main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/submit/project10/Square/Square.jack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/submit/project10/Square/Square.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/submit/project10/Square/SquareGame.jack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/submit/project10/Square/SquareGame.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/submit/project10/makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/submit/project10/project10.zip" afterDir="false" />
+    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="make submission file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/10/ExpressionLessSquare/SquareGame.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data/10/ExpressionLessSquare/SquareGame.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -388,7 +369,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711550718126</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="make submission file">
+      <option name="closed" value="true" />
+      <created>1711550755619</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1711550755619</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -404,7 +393,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="code instruction without symbols" />
     <MESSAGE value="implement to code symbols" />
     <MESSAGE value="create hack files" />
     <MESSAGE value="fix bug on assignments" />
@@ -429,6 +417,7 @@
     <MESSAGE value="outline compile engine class" />
     <MESSAGE value="make compiler to be able to compile expressions" />
     <MESSAGE value="test compiler" />
-    <option name="LAST_COMMIT_MESSAGE" value="test compiler" />
+    <MESSAGE value="make submission file" />
+    <option name="LAST_COMMIT_MESSAGE" value="make submission file" />
   </component>
 </project>
