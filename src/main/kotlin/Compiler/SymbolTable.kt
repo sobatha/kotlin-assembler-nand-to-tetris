@@ -1,12 +1,18 @@
 package Compiler
 enum class Kind {
-    STATIC, FIELD, ARG, VAR
+    STATIC, FIELD, ARG, VAR, NULL
 }
 class SymbolTable {
     var table = mutableMapOf<String, Symbol>()
     var kindIndex = mutableMapOf<Kind, Int>(
         Kind.VAR to 0, Kind.STATIC to 0, Kind.FIELD to 0, Kind.ARG to 0
     )
+    fun printTable() {
+        for (symbol in table.keys) {
+            println("name: $symbol, type: ${table[symbol]?.type}," +
+                    " kind: ${table[symbol]?.kind}, index:  ${table[symbol]?.index}")
+        }
+    }
 
     val reset = {
         table = mutableMapOf<String, Symbol>()
@@ -29,7 +35,7 @@ class SymbolTable {
             "field" -> Kind.FIELD
             "arg" -> Kind.ARG
             "var" -> Kind.VAR
-            else -> IllegalStateException("ünknown identifier kind")
+            else -> Kind.NULL
         }
     }
     val typeOf = { name: String ->

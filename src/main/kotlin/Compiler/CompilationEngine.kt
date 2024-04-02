@@ -13,6 +13,8 @@ val escape: Map<String, String> = mapOf("<" to "&lt;", ">" to "&gt;","\"" to "&q
 class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
     val outputPath = outputPath
     val tokenizer = tokenizer
+    val classSymbolTable = SymbolTable()
+    var functionSymbolTable = SymbolTable()
 
     fun compile() {
         while (tokenizer.hasMoreToken()) {
@@ -40,20 +42,19 @@ class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
     }
 
     fun compileClassVarDec() {
-        writeFile("<classVarDec>")
-        when (tokenizer.currentToken) {
-            "static" -> process("static")
-            "field" -> process("field")
-        }
-        process(tokenizer.currentToken)
-        processIdentifier()
+        val kind = classSymbolTable.kindOf(process(tokenizer.currentToken))
+        val type = process(tokenizer.currentToken)
+        var identifier = processIdentifier()
+        classSymbolTable.define(identifier, type, kind)
 
         while (tokenizer.currentToken == ",") {
             process(",")
+            identifier = tokenizer.currentToken
             processIdentifier()
+
+            classSymbolTable.define(identifier, type, kind)
         }
         process(";")
-        writeFile("</classVarDec>")
     }
 
     fun compileSubroutine() {
@@ -275,23 +276,22 @@ class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
     }
 
 
-    private fun process(expectedToken: String) {
-        if (tokenizer.currentToken == expectedToken) {
-            tokenizer.currentToken = escape[tokenizer.currentToken] ?: tokenizer.currentToken
-            writeFile(compileTerminalTokens(tokenizer.currentToken, tokenizer.currentTokenType))
-        } else {
+    private fun process(expectedToken: String): String {
+        var currentToken = tokenizer.currentToken
+        if (currentToken != expectedToken) {
             println("Syntax error")
         }
         tokenizer.advance()
+        return currentToken
     }
 
-    private fun processIdentifier() {
-        if (tokenizer.currentTokenType == "IDENTIFIER") {
-            writeFile(compileTerminalTokens(tokenizer.currentToken, tokenizer.currentTokenType))
-        } else {
+    private fun processIdentifier(): String {
+        var currentToken = tokenizer.currentToken
+        if (tokenizer.currentTokenType != "IDENTIFIER") {
             println("Syntax error")
         }
         tokenizer.advance()
+        return currentToken
     }
 
     private fun writeFile(tag:String) {
