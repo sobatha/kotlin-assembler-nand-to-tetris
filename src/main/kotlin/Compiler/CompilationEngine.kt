@@ -226,17 +226,17 @@ class CompilationEngine(tokenizer: JackTokenizer, private val outputPath: String
     fun compileTerm() {
         if (tokenizer.currentTokenType == "KEYWORD") {
             when(process(tokenizer.currentToken)) {
-                "this" -> vmWriter.writePop("pointer", 0)
-                "false" -> vmWriter.writePop("constant", 0)
+                "this" -> vmWriter.writePush("pointer", 0)
+                "false" -> vmWriter.writePush("constant", 0)
                 "true" -> {
-                    vmWriter.writePop("constant", 1)
+                    vmWriter.writePush("constant", 1)
                     vmWriter.writeArithmetic("neg")
                 }
                 "null" -> vmWriter.writePop("constant", 0)
                 else -> throw IllegalStateException("expected keyword const but received not")
             }
         } else if (tokenizer.currentTokenType == "INT_CONST") {
-            vmWriter.writePop("constant", process(tokenizer.currentToken).toInt())
+            vmWriter.writePush("constant", process(tokenizer.currentToken).toInt())
         } else if (tokenizer.currentTokenType == "STRING_CONST") {
             vmWriter.writePush("constant", process(tokenizer.currentToken).length)
             vmWriter.writeCall("String.new", 1)

@@ -12,7 +12,7 @@ fun main() {
 
      if (path.endsWith(".jack")) {
          var tokenizer = JackTokenizer(path)
-         var compiler = CompilationEngine(tokenizer, path.removeSuffix(".jack")+"SymbolTableTest.vm")
+         var compiler = CompilationEngine(tokenizer, path.removeSuffix(".jack")+".vm")
          compiler.compile()
          println("class symbol table: ")
          compiler.classSymbolTable.printTable()
