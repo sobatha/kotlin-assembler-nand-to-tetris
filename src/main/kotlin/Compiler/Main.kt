@@ -7,12 +7,12 @@ import org.example.VMTranslator.initSys
 import java.io.File
 
 fun main() {
-     val path = "data/11/Pong/Bat.jack"
+     val path = "data/11/Seven/Main.jack"
 
 
      if (path.endsWith(".jack")) {
          var tokenizer = JackTokenizer(path)
-         var compiler = CompilationEngine(tokenizer, path.removeSuffix(".jack")+"SymbolTableTest.xml")
+         var compiler = CompilationEngine(tokenizer, path.removeSuffix(".jack")+"SymbolTableTest.vm")
          compiler.compile()
          println("class symbol table: ")
          compiler.classSymbolTable.printTable()

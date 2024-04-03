@@ -39,10 +39,19 @@ class SymbolTable {
         }
     }
     val typeOf = { name: String ->
-        table.getOrDefault(name, null)?.type
+        table.getValue(name).type
     }
     val indexOf = { name:String ->
-        table.getOrDefault(name, null)?.index
+        table.getValue(name).index
+    }
+    val segmentOf = { name:String ->
+        when(table.getValue(name).kind) {
+            Kind.ARG -> "argument"
+            Kind.VAR -> "local"
+            Kind.FIELD -> "this"
+            Kind.STATIC -> "static"
+            else -> throw IllegalStateException()
+        }
     }
 }
 

@@ -10,12 +10,12 @@ val KEYWORD_CONST = listOf("true", "false", "null", "this")
 val op = listOf("+", "-", "*", "/", "&", "|", ">", "<", "=")
 val escape: Map<String, String> = mapOf("<" to "&lt;", ">" to "&gt;","\"" to "&quote;","&" to "&amp;",)
 
-class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
-    val outputPath = outputPath
+class CompilationEngine(tokenizer: JackTokenizer, private val outputPath: String) {
     val tokenizer = tokenizer
     var className: String = ""
     val classSymbolTable = SymbolTable()
     var functionSymbolTable = SymbolTable()
+    val vmWriter = VMwriter(outputPath)
 
     fun compile() {
         while (tokenizer.hasMoreToken()) {
@@ -24,7 +24,6 @@ class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
         }
     }
     fun compileClass() {
-        writeFile("<class>")
         process("class")
         className = processIdentifier()
         process("{")
@@ -38,8 +37,6 @@ class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
             compileSubroutine()
         }
 
-        writeFile(compileTerminalTokens(tokenizer.currentToken, tokenizer.currentTokenType))
-        writeFile("</class>")
     }
 
     fun compileClassVarDec() {
@@ -60,25 +57,34 @@ class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
 
     fun compileSubroutine() {
         functionSymbolTable.reset()
-        functionSymbolTable.define("this", className, functionSymbolTable.kindOf("argument"))
 
-        when (tokenizer.currentToken) {
-            "constructor" -> process("constructor")
-            "function" -> process("function")
-            "method" -> process("method")
-        }
-        process(tokenizer.currentToken)
-        processIdentifier()
+        val methodType = process(tokenizer.currentToken)
+        val type = process(tokenizer.currentToken)
+        val functionName = processIdentifier()
 
         process("(")
-        compileParameterList()
+        val paramNum = compileParameterList()
         process(")")
+
+        vmWriter.writeFunction(className, functionName, paramNum)
+
+        if (methodType == "method") {
+            // thisを引数の初めに入れ、ポインタにthisのアドレスを保管する
+            functionSymbolTable.define("this", className, functionSymbolTable.kindOf("argument"))
+            pushFromSymbolTable("this")
+            vmWriter.writePop("point", 0)
+        } else if (methodType == "constructor") {
+            // thisポインタに現在のアドレスを保管する
+            vmWriter.writePush("constant", paramNum)
+            vmWriter.writeCall("Memory.alloc", 1)
+            vmWriter.writePop("point", 0)
+        }
+//        functionSymbolTable.printTable()
         compileSubroutineBody()
-        println("function symbol table: ")
-        functionSymbolTable.printTable()
     }
 
-    fun compileParameterList() {
+    fun compileParameterList(): Int {
+        var paramNum = 0
         while (tokenizer.currentToken == "int" ||
             tokenizer.currentToken == "char" ||
             tokenizer.currentToken == "boolean" ||
@@ -88,25 +94,26 @@ class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
             var identifier = processIdentifier()
             val kind = functionSymbolTable.kindOf("argument")
             functionSymbolTable.define(identifier, type, kind)
+            paramNum++
 
             while (tokenizer.currentToken == ",") {
                 process(",")
                 type = process(tokenizer.currentToken)
                 identifier = processIdentifier()
                 functionSymbolTable.define(identifier, type, kind)
+                paramNum++
             }
         }
+        return paramNum
     }
 
     fun compileSubroutineBody() {
-        writeFile("<subroutineBody>")
         process("{")
         while (tokenizer.currentToken == "var") {
             compileVarDec()
         }
         compileStatements()
         process("}")
-        writeFile("</subroutineBody>")
     }
 
     fun compileVarDec() {
@@ -126,7 +133,6 @@ class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
     }
 
     fun compileStatements() {
-        writeFile("<statements>")
         while (
             tokenizer.currentToken == "let" ||
             tokenizer.currentToken == "if" ||
@@ -142,14 +148,13 @@ class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
                 "return" -> compileReturn()
             }
         }
-        writeFile("</statements>")
     }
 
     fun compileLet() {
-        writeFile("<letStatement>")
         process("let")
-        processIdentifier()
+        val destination = processIdentifier()
         if (tokenizer.currentToken == "[") {
+            TODO("array access")
             process("[")
             compileExpression()
             process("]")
@@ -157,11 +162,10 @@ class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
         process("=")
         compileExpression()
         process(";")
-        writeFile("</letStatement>")
+        popFromSymbolTable(destination)
     }
 
     fun compileIf() {
-        writeFile("<ifStatement>")
         process("if")
         process("(")
         compileExpression()
@@ -175,7 +179,6 @@ class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
             compileStatements()
             process("}")
         }
-        writeFile("</ifStatement>")
     }
 
     fun compileWhile() {
@@ -191,100 +194,114 @@ class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
     }
 
     fun compileDo() {
-        writeFile("<doStatement>")
         process("do")
-        processIdentifier()
-        if (tokenizer.currentToken == "(" ) {
-            process("(")
-            compileExpressionList()
-            process(")")
-        } else if (tokenizer.currentToken == ".") {
-            process(".")
-            processIdentifier()
-            process("(")
-            compileExpressionList()
-            process(")")
-        }
+        println("processing do")
+        compileExpression()
         process(";")
-        writeFile("</doStatement>")
+        vmWriter.writePop("temp", 0)
     }
 
     fun compileReturn() {
-        writeFile("<returnStatement>")
         process("return")
         if (tokenizer.currentToken != ";") {
             compileExpression()
+        } else {
+            vmWriter.writePush("constant", 0)
         }
         process(";")
-        writeFile("</returnStatement>")
+        vmWriter.writeReturn()
     }
 
     fun compileExpression() {
-        writeFile("<expression>")
+        println("compile expression ${tokenizer.currentToken}")
         compileTerm()
+        println("${tokenizer.currentToken} in ope ? ${tokenizer.currentToken in op}")
         if (tokenizer.currentToken in op) {
-            process(tokenizer.currentToken)
+            val operand = process(tokenizer.currentToken)
             compileTerm()
+            vmWriter.writeArithmetic(operand)
         }
-        writeFile("</expression>")
     }
 
     fun compileTerm() {
-        writeFile("<term>")
-        if (tokenizer.currentTokenType == "KEYWORD" ||
-            tokenizer.currentTokenType == "INT_CONST" ||
-            tokenizer.currentTokenType == "STRING_CONST" ) {
-            process(tokenizer.currentToken)
+        if (tokenizer.currentTokenType == "KEYWORD") {
+            when(process(tokenizer.currentToken)) {
+                "this" -> vmWriter.writePop("pointer", 0)
+                "false" -> vmWriter.writePop("constant", 0)
+                "true" -> {
+                    vmWriter.writePop("constant", 1)
+                    vmWriter.writeArithmetic("neg")
+                }
+                "null" -> vmWriter.writePop("constant", 0)
+                else -> throw IllegalStateException("expected keyword const but received not")
+            }
+        } else if (tokenizer.currentTokenType == "INT_CONST") {
+            vmWriter.writePop("constant", process(tokenizer.currentToken).toInt())
+        } else if (tokenizer.currentTokenType == "STRING_CONST") {
+            vmWriter.writePush("constant", process(tokenizer.currentToken).length)
+            vmWriter.writeCall("String.new", 1)
         } else if (tokenizer.currentTokenType == "IDENTIFIER") {
-            processIdentifier()
-            if (tokenizer.currentToken == "[") {
-                // if array access
-                process("[")
-                compileExpression()
-                process("]")
-            } else if (tokenizer.currentToken == "(" ) {
-                process("(")
-                compileExpressionList()
-                process(")")
-            } else if (tokenizer.currentToken == ".") {
-                process(".")
-                processIdentifier()
-                process("(")
-                compileExpressionList()
-                process(")")
+            val varName = processIdentifier()
+            when (tokenizer.currentToken) {
+                "[" -> {
+                    // if array access
+                    process("[")
+                    compileExpression()
+                    process("]")
+                }
+                "(" -> {
+                    process("(")
+                    compileExpressionList()
+                    process(")")
+                }
+                "." -> {
+                    process(".")
+                    val funcName = processIdentifier()
+                    if (!varName[0].isUpperCase()) {
+                        pushFromSymbolTable(varName) //methodsの呼び出し
+                    }
+                    process("(")
+                    var numParam = compileExpressionList()
+                    process(")")
+                    if (varName[0].isUpperCase()) { //他クラスの呼び出し
+                        vmWriter.writeCall("$varName.$funcName", numParam)
+                    } else { //methodsの呼び出し
+                        var classOfMethod = getTypeOfSymbol(varName)
+                        vmWriter.writeCall("$classOfMethod.$varName", numParam + 1)
+                    }
+                }
+                else -> {
+                    pushFromSymbolTable(varName)
+                }
             }
         } else if (tokenizer.currentToken == "(") {
             process("(")
             compileExpression()
             process(")")
         } else if (tokenizer.currentToken == "-" || tokenizer.currentToken == "~") {
-            process(tokenizer.currentToken)
+            var unaryOp = process(tokenizer.currentToken)
             compileTerm()
+            vmWriter.writeUnaryOp(unaryOp)
         }
-        writeFile("</term>")
     }
 
-    fun compileExpressionList() {
-        writeFile("<expressionList>")
+    fun compileExpressionList(): Int {
+        var numExpression = 0
         if (tokenizer.currentToken != ")") {
             compileExpression()
+            numExpression++
             while (tokenizer.currentToken == ",") {
                 process(",")
                 compileExpression()
+                numExpression++
             }
         }
-        writeFile("</expressionList>")
+        return numExpression
     }
-
-    fun compileTerminalTokens(token:String, tokenType:String): String {
-        return "<${tokenTypeToXmlTag[tokenType]}> $token </${tokenTypeToXmlTag[tokenType]}>"
-    }
-
-
     private fun process(expectedToken: String): String {
         var currentToken = tokenizer.currentToken
         if (currentToken != expectedToken) {
-            println("Syntax error")
+            println("Syntax error expected: $expectedToken -> received: $currentToken")
         }
         tokenizer.advance()
         return currentToken
@@ -301,5 +318,30 @@ class CompilationEngine(tokenizer: JackTokenizer, outputPath: String) {
 
     private fun writeFile(tag:String) {
         File(outputPath).appendText("$tag\n")
+    }
+
+    private fun popFromSymbolTable(symbolName: String) {
+        try {
+            vmWriter.writePop(functionSymbolTable.segmentOf(symbolName), functionSymbolTable.indexOf(symbolName))
+        } catch(exception: Exception) {
+            vmWriter.writePop(classSymbolTable.segmentOf(symbolName), functionSymbolTable.indexOf(symbolName))
+        }
+    }
+
+    private fun pushFromSymbolTable(symbolName: String) {
+        try {
+            vmWriter.writePush(functionSymbolTable.segmentOf(symbolName), functionSymbolTable.indexOf(symbolName))
+        } catch(exception: Exception) {
+            vmWriter.writePush(classSymbolTable.segmentOf(symbolName), functionSymbolTable.indexOf(symbolName))
+        }
+    }
+    private fun getTypeOfSymbol(symbolName: String): String {
+        var type = ""
+        type = try {
+            functionSymbolTable.typeOf(symbolName)
+        } catch (e: Exception) {
+            classSymbolTable.typeOf(symbolName)
+        }
+        return type
     }
 }

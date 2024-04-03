@@ -2,7 +2,7 @@ package Compiler
 
 import java.io.File
 
-class VMwriter(val outputFilePath: String) {
+class VMwriter(private val outputFilePath: String) {
     fun writePush(segment: String, index:Int) {
         write("push ${segment.lowercase()} $index")
     }
@@ -10,7 +10,27 @@ class VMwriter(val outputFilePath: String) {
         write("pop ${segment.lowercase()} $index")
     }
     fun writeArithmetic(command:String) {
-        write("${command.lowercase()}")
+        val operand = when(command) {
+            "+" -> "add"
+            "-" -> "sub"
+            "=" -> "eq"
+            "<" -> "gt"
+            ">" -> "lt"
+            "&" -> "and"
+            "|" -> "or"
+            "*" -> "call Math.multiply 2"
+            "/" -> "call Math.divide 2"
+            else -> "unknown op"
+        }
+        write("$operand")
+    }
+    fun writeUnaryOp(command: String) {
+        val operand = when(command) {
+            "-" -> "neg"
+            "~" -> "not"
+            else -> "unknown op"
+        }
+        write("$operand")
     }
     fun writeLabel(label: String) {
         write("label $label")
@@ -24,11 +44,11 @@ class VMwriter(val outputFilePath: String) {
     fun writeCall(name: String, nArgs: Int) {
         write("call $name $nArgs")
     }
-    fun writeFunction(name: String, nVars: Int) {
-        write("function $name $nVars")
+    fun writeFunction(className: String, funName:String, nVars: Int) {
+        write("function $className.$funName $nVars")
     }
     fun writeReturn() { write("return") }
     private fun write(content:String) {
-        File(outputFilePath).writeText(content + "\n")
+        File(outputFilePath).appendText(content + "\n")
     }
 }
