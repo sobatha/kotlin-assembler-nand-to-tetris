@@ -16,6 +16,8 @@ class CompilationEngine(tokenizer: JackTokenizer, private val outputPath: String
     val classSymbolTable = SymbolTable()
     var functionSymbolTable = SymbolTable()
     val vmWriter = VMwriter(outputPath)
+    var labelIndexL1 = 0
+    var labelIndexL2 = 0
 
     fun compile() {
         while (tokenizer.hasMoreToken()) {
@@ -167,30 +169,44 @@ class CompilationEngine(tokenizer: JackTokenizer, private val outputPath: String
 
     fun compileIf() {
         process("if")
+        println("processing if")
         process("(")
         compileExpression()
+        vmWriter.writeUnaryOp("~")
         process(")")
+        //expression trueの場合　分岐しない　falseでelse節まで分岐
+        vmWriter.writeIf("L1.$labelIndexL1")
         process("{")
         compileStatements()
         process("}")
+        vmWriter.writeGoto("L2.$labelIndexL2")
+        vmWriter.writeLabel("L1.$labelIndexL1")
         if (tokenizer.currentToken == "else") {
             process("else")
             process("{")
             compileStatements()
             process("}")
         }
+        vmWriter.writeLabel("L2.$labelIndexL2")
+        labelIndexL1++
+        labelIndexL2++
     }
 
     fun compileWhile() {
-        writeFile("<whileStatement>")
+        vmWriter.writeLabel("L1.$labelIndexL1")
         process("while")
         process("(")
         compileExpression()
+        vmWriter.writeUnaryOp("~")
+        vmWriter.writeIf("L2.$labelIndexL2")
         process(")")
         process("{")
         compileStatements()
         process("}")
-        writeFile("</whileStatement>")
+        vmWriter.writeGoto("L1.$labelIndexL1")
+        vmWriter.writeLabel("L2.$labelIndexL2")
+        labelIndexL1++
+        labelIndexL2++
     }
 
     fun compileDo() {
@@ -245,6 +261,7 @@ class CompilationEngine(tokenizer: JackTokenizer, private val outputPath: String
             when (tokenizer.currentToken) {
                 "[" -> {
                     // if array access
+                    TODO("array access")
                     process("[")
                     compileExpression()
                     process("]")
