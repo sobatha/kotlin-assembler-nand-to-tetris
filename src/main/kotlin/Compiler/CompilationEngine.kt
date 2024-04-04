@@ -32,6 +32,7 @@ class CompilationEngine(tokenizer: JackTokenizer, private val outputPath: String
         while (tokenizer.currentToken == "static" || tokenizer.currentToken == "field") {
             compileClassVarDec()
         }
+        classSymbolTable.printTable()
 
         while (tokenizer.currentToken == "constructor" || tokenizer.currentToken == "function"
             || tokenizer.currentToken == "method") {
@@ -67,21 +68,7 @@ class CompilationEngine(tokenizer: JackTokenizer, private val outputPath: String
         val paramNum = compileParameterList()
         process(")")
 
-        vmWriter.writeFunction(className, functionName, paramNum)
-
-        if (methodType == "method") {
-            // thisを引数の初めに入れ、ポインタにthisのアドレスを保管する
-            functionSymbolTable.define("this", className, functionSymbolTable.kindOf("argument"))
-            pushFromSymbolTable("this")
-            vmWriter.writePop("point", 0)
-        } else if (methodType == "constructor") {
-            // thisポインタに現在のアドレスを保管する
-            vmWriter.writePush("constant", paramNum)
-            vmWriter.writeCall("Memory.alloc", 1)
-            vmWriter.writePop("point", 0)
-        }
-//        functionSymbolTable.printTable()
-        compileSubroutineBody()
+        compileSubroutineBody(functionName, methodType)
     }
 
     fun compileParameterList(): Int {
@@ -108,11 +95,29 @@ class CompilationEngine(tokenizer: JackTokenizer, private val outputPath: String
         return paramNum
     }
 
-    fun compileSubroutineBody() {
+    fun compileSubroutineBody(functionName:String, methodType: String) {
         process("{")
         while (tokenizer.currentToken == "var") {
             compileVarDec()
         }
+
+        val numVars = when (methodType) {
+            "method" -> functionSymbolTable.table.size + 1
+            else -> functionSymbolTable.table.size
+        }
+        vmWriter.writeFunction(className, functionName, numVars)
+        if (methodType == "method") {
+            // thisを引数の初めに入れ、ポインタにthisのアドレスを保管する
+            functionSymbolTable.define("this", className, functionSymbolTable.kindOf("argument"))
+            pushFromSymbolTable("this")
+            vmWriter.writePop("pointer", 0)
+        } else if (methodType == "constructor") {
+            // thisポインタに現在のアドレスを保管する
+            vmWriter.writePush("constant", classSymbolTable.table.size)
+            vmWriter.writeCall("Memory.alloc", 1)
+            vmWriter.writePop("pointer", 0)
+        }
+        functionSymbolTable.printTable()
         compileStatements()
         process("}")
     }
@@ -244,7 +249,7 @@ class CompilationEngine(tokenizer: JackTokenizer, private val outputPath: String
                 "false" -> vmWriter.writePush("constant", 0)
                 "true" -> {
                     vmWriter.writePush("constant", 1)
-                    vmWriter.writeArithmetic("neg")
+                    vmWriter.writeUnaryOp("-")
                 }
                 "null" -> vmWriter.writePop("constant", 0)
                 else -> throw IllegalStateException("expected keyword const but received not")
@@ -266,8 +271,10 @@ class CompilationEngine(tokenizer: JackTokenizer, private val outputPath: String
                 }
                 "(" -> {
                     process("(")
-                    compileExpressionList()
+                    var numParam = compileExpressionList()
                     process(")")
+                    vmWriter.writePush("pointer", 0)
+                    vmWriter.writeCall("$className.$varName", numParam + 1)
                 }
                 "." -> {
                     process(".")
@@ -282,7 +289,7 @@ class CompilationEngine(tokenizer: JackTokenizer, private val outputPath: String
                         vmWriter.writeCall("$varName.$funcName", numParam)
                     } else { //methodsの呼び出し
                         var classOfMethod = getTypeOfSymbol(varName)
-                        vmWriter.writeCall("$classOfMethod.$varName", numParam + 1)
+                        vmWriter.writeCall("$classOfMethod.$funcName", numParam + 1)
                     }
                 }
                 else -> {
@@ -339,7 +346,7 @@ class CompilationEngine(tokenizer: JackTokenizer, private val outputPath: String
         try {
             vmWriter.writePop(functionSymbolTable.segmentOf(symbolName), functionSymbolTable.indexOf(symbolName))
         } catch(exception: Exception) {
-            vmWriter.writePop(classSymbolTable.segmentOf(symbolName), functionSymbolTable.indexOf(symbolName))
+            vmWriter.writePop(classSymbolTable.segmentOf(symbolName), classSymbolTable.indexOf(symbolName))
         }
     }
 
@@ -347,7 +354,7 @@ class CompilationEngine(tokenizer: JackTokenizer, private val outputPath: String
         try {
             vmWriter.writePush(functionSymbolTable.segmentOf(symbolName), functionSymbolTable.indexOf(symbolName))
         } catch(exception: Exception) {
-            vmWriter.writePush(classSymbolTable.segmentOf(symbolName), functionSymbolTable.indexOf(symbolName))
+            vmWriter.writePush(classSymbolTable.segmentOf(symbolName), classSymbolTable.indexOf(symbolName))
         }
     }
     private fun getTypeOfSymbol(symbolName: String): String {
