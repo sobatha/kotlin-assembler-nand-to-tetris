@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="make submission file">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="827c0499-f5c3-4249-850a-032203eda5b4" name="Changes" comment="create class symbol table">
+      <change afterPath="$PROJECT_DIR$/data/11/Pong/BatSymbolTableTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Compiler/CompilationEngine.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Compiler/CompilationEngine.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Compiler/SymbolTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Compiler/SymbolTable.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,22 +41,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Gradle.Build untitled.executor": "Run",
-    "Kotlin.MainKt (1).executor": "Debug",
-    "Kotlin.MainKt (2).executor": "Run",
-    "Kotlin.MainKt.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "jdk.selected.JAVA_MODULE": "openjdk-20",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/yokomizonatsuki/git/Nand-to-Tetris/Assembler/untitled/src/submit/project10"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Gradle.Build untitled.executor&quot;: &quot;Run&quot;,
+    &quot;Kotlin.MainKt (1).executor&quot;: &quot;Debug&quot;,
+    &quot;Kotlin.MainKt (2).executor&quot;: &quot;Run&quot;,
+    &quot;Kotlin.MainKt.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-20&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/yokomizonatsuki/git/Nand-to-Tetris/Assembler/untitled/src/submit/project10&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/submit/project10" />
@@ -377,7 +379,55 @@
       <option name="project" value="LOCAL" />
       <updated>1711550755619</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="outline for project 11">
+      <option name="closed" value="true" />
+      <created>1712033725201</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1712033725204</updated>
+    </task>
+    <task id="LOCAL-00034" summary="outline for project 11">
+      <option name="closed" value="true" />
+      <created>1712034444576</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1712034444576</updated>
+    </task>
+    <task id="LOCAL-00035" summary="reset時にkindindexも初期化">
+      <option name="closed" value="true" />
+      <created>1712035708352</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1712035708352</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Vmwriter実装">
+      <option name="closed" value="true" />
+      <created>1712035883752</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1712035883752</updated>
+    </task>
+    <task id="LOCAL-00037" summary="add project11 test files">
+      <option name="closed" value="true" />
+      <created>1712038451690</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1712038451690</updated>
+    </task>
+    <task id="LOCAL-00038" summary="create class symbol table">
+      <option name="closed" value="true" />
+      <created>1712042717194</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1712042717196</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -393,11 +443,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="implement to code symbols" />
-    <MESSAGE value="create hack files" />
-    <MESSAGE value="fix bug on assignments" />
-    <MESSAGE value="be able to add" />
-    <MESSAGE value="add test file" />
     <MESSAGE value="提出用ファイル作成" />
     <MESSAGE value="arithmetic implement" />
     <MESSAGE value="implement branch" />
@@ -418,6 +463,11 @@
     <MESSAGE value="make compiler to be able to compile expressions" />
     <MESSAGE value="test compiler" />
     <MESSAGE value="make submission file" />
-    <option name="LAST_COMMIT_MESSAGE" value="make submission file" />
+    <MESSAGE value="outline for project 11" />
+    <MESSAGE value="reset時にkindindexも初期化" />
+    <MESSAGE value="Vmwriter実装" />
+    <MESSAGE value="add project11 test files" />
+    <MESSAGE value="create class symbol table" />
+    <option name="LAST_COMMIT_MESSAGE" value="create class symbol table" />
   </component>
 </project>
