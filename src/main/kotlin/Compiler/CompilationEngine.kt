@@ -64,6 +64,11 @@ class CompilationEngine(tokenizer: JackTokenizer, private val outputPath: String
         val type = process(tokenizer.currentToken)
         val functionName = processIdentifier()
 
+        if (methodType == "method") {
+            // thisを引数の初めに入れ、ポインタにthisのアドレスを保管する
+            functionSymbolTable.define("this", className, functionSymbolTable.kindOf("argument"))
+        }
+
         process("(")
         val paramNum = compileParameterList()
         process(")")
@@ -107,8 +112,6 @@ class CompilationEngine(tokenizer: JackTokenizer, private val outputPath: String
         }
         vmWriter.writeFunction(className, functionName, numVars)
         if (methodType == "method") {
-            // thisを引数の初めに入れ、ポインタにthisのアドレスを保管する
-            functionSymbolTable.define("this", className, functionSymbolTable.kindOf("argument"))
             pushFromSymbolTable("this")
             vmWriter.writePop("pointer", 0)
         } else if (methodType == "constructor") {
