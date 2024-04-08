@@ -1,0 +1,190 @@
+function SquareGame.new 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+push constant 0
+push constant 0
+push constant 30
+call Square.new 3
+pop this 0
+push constant 0
+pop this 1
+push pointer 0
+return
+function SquareGame.dispose 2
+push argument 0
+pop pointer 0
+push this 0
+call Square.dispose 1
+pop temp 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function SquareGame.moveSquare 2
+push argument 0
+pop pointer 0
+push this 1
+push constant 1
+eq
+not
+if-goto L1.1
+push this 0
+call Square.moveUp 1
+pop temp 0
+goto L2.1
+label L1.1
+label L2.1
+push this 1
+push constant 2
+eq
+not
+if-goto L1.2
+push this 0
+call Square.moveDown 1
+pop temp 0
+goto L2.2
+label L1.2
+label L2.2
+push this 1
+push constant 3
+eq
+not
+if-goto L1.3
+push this 0
+call Square.moveLeft 1
+pop temp 0
+goto L2.3
+label L1.3
+label L2.3
+push this 1
+push constant 4
+eq
+not
+if-goto L1.4
+push this 0
+call Square.moveRight 1
+pop temp 0
+goto L2.4
+label L1.4
+label L2.4
+push constant 5
+call Sys.wait 1
+pop temp 0
+push constant 0
+return
+function SquareGame.run 4
+push argument 0
+pop pointer 0
+push constant 0
+pop local 1
+label L1.5
+push local 1
+not
+not
+if-goto L2.5
+label L1.6
+push local 0
+push constant 0
+eq
+not
+if-goto L2.6
+call Keyboard.keyPressed 0
+pop local 0
+push pointer 0
+call SquareGame.moveSquare 1
+pop temp 0
+goto L1.6
+label L2.6
+push local 0
+push constant 81
+eq
+not
+if-goto L1.7
+push constant 1
+neg
+pop local 1
+goto L2.7
+label L1.7
+label L2.7
+push local 0
+push constant 90
+eq
+not
+if-goto L1.8
+push this 0
+call Square.decSize 1
+pop temp 0
+goto L2.8
+label L1.8
+label L2.8
+push local 0
+push constant 88
+eq
+not
+if-goto L1.9
+push this 0
+call Square.incSize 1
+pop temp 0
+goto L2.9
+label L1.9
+label L2.9
+push local 0
+push constant 131
+eq
+not
+if-goto L1.10
+push constant 1
+pop this 1
+goto L2.10
+label L1.10
+label L2.10
+push local 0
+push constant 133
+eq
+not
+if-goto L1.11
+push constant 2
+pop this 1
+goto L2.11
+label L1.11
+label L2.11
+push local 0
+push constant 130
+eq
+not
+if-goto L1.12
+push constant 3
+pop this 1
+goto L2.12
+label L1.12
+label L2.12
+push local 0
+push constant 132
+eq
+not
+if-goto L1.13
+push constant 4
+pop this 1
+goto L2.13
+label L1.13
+label L2.13
+label L1.14
+push local 0
+push constant 0
+eq
+not
+not
+if-goto L2.14
+call Keyboard.keyPressed 0
+pop local 0
+push pointer 0
+call SquareGame.moveSquare 1
+pop temp 0
+goto L1.14
+label L2.14
+goto L1.5
+label L2.5
+push constant 0
+return
