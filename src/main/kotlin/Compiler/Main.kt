@@ -7,7 +7,7 @@ import org.example.VMTranslator.initSys
 import java.io.File
 
 fun main() {
-     val path = "data/11/Square"
+     val path = "data/11/Pong"
 
 
      if (path.endsWith(".jack")) {
