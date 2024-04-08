@@ -163,15 +163,26 @@ class CompilationEngine(tokenizer: JackTokenizer, private val outputPath: String
         process("let")
         val destination = processIdentifier()
         if (tokenizer.currentToken == "[") {
-            TODO("array access")
+            pushFromSymbolTable(destination)
             process("[")
             compileExpression()
             process("]")
+            vmWriter.writeArithmetic("+")
+            process("=")
+            compileExpression()
+            process(";")
+
+            vmWriter.writePop("temp", 0)
+            vmWriter.writePop("pointer", 1)
+            vmWriter.writePush("temp", 0)
+            vmWriter.writePop("that", 0)
+
+        } else {
+            process("=")
+            compileExpression()
+            process(";")
+            popFromSymbolTable(destination)
         }
-        process("=")
-        compileExpression()
-        process(";")
-        popFromSymbolTable(destination)
     }
 
     fun compileIf() {
@@ -237,7 +248,7 @@ class CompilationEngine(tokenizer: JackTokenizer, private val outputPath: String
     fun compileExpression() {
         println("compile expression ${tokenizer.currentToken}")
         compileTerm()
-        println("${tokenizer.currentToken} in ope ? ${tokenizer.currentToken in op}")
+//        println("${tokenizer.currentToken} in ope ? ${tokenizer.currentToken in op}")
         if (tokenizer.currentToken in op) {
             val operand = process(tokenizer.currentToken)
             compileTerm()
@@ -260,17 +271,25 @@ class CompilationEngine(tokenizer: JackTokenizer, private val outputPath: String
         } else if (tokenizer.currentTokenType == "INT_CONST") {
             vmWriter.writePush("constant", process(tokenizer.currentToken).toInt())
         } else if (tokenizer.currentTokenType == "STRING_CONST") {
-            vmWriter.writePush("constant", process(tokenizer.currentToken).length)
+            vmWriter.writePush("constant", tokenizer.currentToken.length)
             vmWriter.writeCall("String.new", 1)
+            for (c in tokenizer.currentToken) {
+                vmWriter.writePush("constant", c.toInt())
+                vmWriter.writeCall("String.appendChar", 2)
+            }
+            process(tokenizer.currentToken)
         } else if (tokenizer.currentTokenType == "IDENTIFIER") {
             val varName = processIdentifier()
             when (tokenizer.currentToken) {
                 "[" -> {
                     // if array access
-                    TODO("array access")
+                    pushFromSymbolTable(varName)
                     process("[")
                     compileExpression()
                     process("]")
+                    vmWriter.writeArithmetic("+")
+                    vmWriter.writePop("pointer", 1)
+                    vmWriter.writePush("that", 0)
                 }
                 "(" -> {
                     process("(")
